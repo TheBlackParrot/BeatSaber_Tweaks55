@@ -71,9 +71,6 @@ namespace Tweaks55.UI {
 	class MAN : BSMLAutomaticViewController {
 		Config config = Config.Instance;
 
-		static bool isAprilFirst = (DateTime.Now.Month == 4) && (DateTime.Now.Day == 1);
-		static bool __true = true;
-
 		void ClearBombColor() {
 			bombColor = BombColor.defaultColor;
 			NotifyPropertyChanged("bombColor");

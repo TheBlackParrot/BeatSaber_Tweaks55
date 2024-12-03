@@ -49,6 +49,7 @@ namespace Tweaks55 {
 
 		public bool enableCustomRumble = false;
 		public float cutRumbleStrength = 1f;
+		public float cutRumbleDuration = 0.14f;
 		public float rumbleChainElementsStrength = 1f;
 		public float rumbleArcsStrength = 1f;
 
@@ -93,10 +94,10 @@ namespace Tweaks55 {
 
 			Rumblez();
 			void Rumblez() {
-				CutRumble.normalPreset._duration = Math.Min(0.2f, CutRumble.DURATION_NORMAL * cutRumbleStrength);
+				CutRumble.normalPreset._duration = CutRumble.DURATION_NORMAL * cutRumbleDuration;
 				CutRumble.normalPreset._strength = CutRumble.STRENGTH_NORMAL * Math.Min(1, (cutRumbleStrength * 1.2f));
 
-				CutRumble.weakPreset._duration = Math.Min(0.2f, CutRumble.DURATION_WEAK * rumbleChainElementsStrength);
+				CutRumble.weakPreset._duration = CutRumble.DURATION_WEAK * cutRumbleDuration;
 				CutRumble.weakPreset._strength = CutRumble.STRENGTH_WEAK * Math.Min(1, (rumbleChainElementsStrength * 1.2f));
 
 				ArcRumble.preset._duration = Math.Min(0.05f, ArcRumble.DURATION_NORMAL * rumbleArcsStrength);
