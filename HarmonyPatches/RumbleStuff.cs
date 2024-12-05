@@ -8,12 +8,6 @@ using UnityEngine;
 namespace Tweaks55.HarmonyPatches {
 	[HarmonyPatch]
 	static class CutRumble {
-		public const float STRENGTH_NORMAL = 1f;
-		public const float DURATION_NORMAL = 0.14f;
-
-		public const float STRENGTH_WEAK = 0.75f;
-		public const float DURATION_WEAK = 0.07f;
-
 		public static readonly HapticPresetSO normalPreset = ScriptableObject.CreateInstance<HapticPresetSO>();
 		public static readonly HapticPresetSO weakPreset = ScriptableObject.CreateInstance<HapticPresetSO>();
 
@@ -43,8 +37,7 @@ namespace Tweaks55.HarmonyPatches {
 
 	[HarmonyPatch]
 	static class ArcRumble {
-		public const float STRENGTH_NORMAL = 0.75f;
-		public const float DURATION_NORMAL = 0.01f;
+		public const float DURATION_NORMAL = 0.05f;
 
 		public static readonly HapticPresetSO preset = ScriptableObject.CreateInstance<HapticPresetSO>();
 

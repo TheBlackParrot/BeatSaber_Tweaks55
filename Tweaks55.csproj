@@ -20,6 +20,7 @@
     <Platforms>x64</Platforms>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
     <BSMTProjectType>BSIPA</BSMTProjectType>
+    <Configuration>Debug</Configuration>
   </PropertyGroup>
 
   <Import Project="SuppressRefereces.targets" />

@@ -116,14 +116,18 @@
 			<macro.as-host host='config'>
 				<modifier-container child-expand-width='true' horizontal-fit='PreferredSize'>
 					<checkbox-setting apply-on-change="true" value="enableCustomRumble" text="Enable Rumble Overrides" hover-hint="Enables / Disables the overrides"/>
-					<slider-setting apply-on-change="true" value="cutRumbleStrength" text="Cut Rumble Strength" hover-hint="Haptic feedback strength for normal cuts"
-								min="0" max="1.4" increment="0.05" show-buttons="true" formatter="PercentageFormatter"/>
-					<slider-setting apply-on-change="true" value="cutRumbleDuration" text="Cut Rumble Duration" hover-hint="Haptic feedback duration for normal cuts"
-									min="0" max="2.5" increment="0.05" show-buttons="true" formatter="PercentageFormatter"/>
-					<slider-setting apply-on-change="true" value="rumbleChainElementsStrength" text="Chain Element Cut Rumble" hover-hint="Haptic feedback strength for chain elements"
-								min="0" max="1.5" increment="0.05" show-buttons="true" formatter="PercentageFormatter"/>
-					<slider-setting apply-on-change="true" value="rumbleArcsStrength" text="Arcs/Guides Rumble" hover-hint="Haptic feedback strength while in Arcs"
-								min="0" max="2" increment="0.05" show-buttons="true" formatter="PercentageFormatter"/>
+					<slider-setting apply-on-change="true" value="cutRumbleStrength" text="Cut Rumble Strength" hover-hint="Haptic feedback strength when cutting notes"
+								min="0" max="1.0" increment="0.01" show-buttons="true" formatter="PercentageFormatter"/>
+					<slider-setting apply-on-change="true" value="cutRumbleDuration" text="Cut Rumble Duration" hover-hint="Haptic feedback duration when cutting notes"
+									min="0" max="1.0" increment="0.005" show-buttons="true" formatter="SecondsFormatter"/>
+					<slider-setting apply-on-change="true" value="rumbleChainElementsStrength" text="Link Rumble Strength" hover-hint="% of haptic feedback strength (for chain links)"
+								min="0" max="2.0" increment="0.01" show-buttons="true" formatter="PercentageFormatter"/>
+					<slider-setting apply-on-change="true" value="rumbleChainElementsDuration" text="Link Rumble Duration" hover-hint="% of haptic feedback duration (for chain links)"
+									min="0" max="2.0" increment="0.01" show-buttons="true" formatter="PercentageFormatter"/>
+					<slider-setting apply-on-change="true" value="rumbleArcsStrength" text="Arc Rumble Strength" hover-hint="Haptic feedback strength when arcs are attached"
+								min="0" max="1.0" increment="0.01" show-buttons="true" formatter="PercentageFormatter"/>
+					<slider-setting apply-on-change="true" value="rumbleArcsDuration" text="Arc Rumble Duration" hover-hint="Haptic feedback duration when arcs are attached"
+									min="0" max="1.0" increment="0.01" show-buttons="true" formatter="PercentageFormatter"/>
 				</modifier-container>
 			</macro.as-host>
 		</tab>

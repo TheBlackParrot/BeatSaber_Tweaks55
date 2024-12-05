@@ -49,14 +49,20 @@ namespace Tweaks55 {
 
 		public bool enableCustomRumble = false;
 		public float cutRumbleStrength = 1f;
-		public float cutRumbleDuration = 0.14f;
-		public float rumbleChainElementsStrength = 1f;
-		public float rumbleArcsStrength = 1f;
+		public float cutRumbleDuration = 0.5f;
+		public float rumbleChainElementsStrength = 0.75f;
+		public float rumbleChainElementsDuration = 0.75f;
+		public float rumbleArcsStrength = 0.75f;
+		public float rumbleArcsDuration = 0.01f;
 
 		/// <summary>
 		/// Call this to force BSIPA to update the config file. This is also called by BSIPA if it detects the file was modified.
 		/// </summary>
 		public virtual void Changed() => ApplyValues();
+
+		private float GetDurationValue(double value) {
+			return (float)Math.Min(1.0, Math.Max(0.001, 1 - Math.Pow(Math.Abs(value - 1), 0.4)));
+		}
 
 		public void ApplyValues() {
 			if(!Plugin.enabled)
@@ -94,17 +100,18 @@ namespace Tweaks55 {
 
 			Rumblez();
 			void Rumblez() {
-				CutRumble.normalPreset._duration = CutRumble.DURATION_NORMAL * cutRumbleDuration;
-				CutRumble.normalPreset._strength = CutRumble.STRENGTH_NORMAL * Math.Min(1, (cutRumbleStrength * 1.2f));
+				CutRumble.normalPreset._duration = GetDurationValue(cutRumbleDuration);
+				CutRumble.normalPreset._strength = Math.Max(0f, Math.Min(1f, cutRumbleStrength));
 
-				CutRumble.weakPreset._duration = CutRumble.DURATION_WEAK * cutRumbleDuration;
-				CutRumble.weakPreset._strength = CutRumble.STRENGTH_WEAK * Math.Min(1, (rumbleChainElementsStrength * 1.2f));
+				CutRumble.weakPreset._duration = Math.Max(0f, Math.Min(1f, CutRumble.normalPreset._duration * rumbleChainElementsDuration));
+				CutRumble.weakPreset._strength = Math.Max(0f, Math.Min(1f, CutRumble.normalPreset._strength * rumbleChainElementsStrength));
 
-				ArcRumble.preset._duration = Math.Min(0.05f, ArcRumble.DURATION_NORMAL * rumbleArcsStrength);
-				ArcRumble.preset._strength = ArcRumble.STRENGTH_NORMAL * Math.Min(1, rumbleArcsStrength * 1.2f);
+				ArcRumble.preset._duration = Math.Max(0f, Math.Min(1f, ArcRumble.DURATION_NORMAL * rumbleArcsDuration));
+				ArcRumble.preset._strength = Math.Max(0f, Math.Min(1f, rumbleArcsStrength));
 			}
 		}
 
-		public  string PercentageFormatter(float x) => x.ToString("0%");
+		public string PercentageFormatter(float x) => x.ToString("0%");
+		public string SecondsFormatter(float x) => (GetDurationValue(x) * 1000).ToString("F0") + "ms";
 	}
 }
